@@ -1,0 +1,9 @@
+<p>
+  <%= label_tag :author_id, 'Choose Author from registered users' %>
+  <%= select_tag :user_id, options_from_collection_for_select(User.all, 'id', 'name') %>
+</p>
+
+<div class="box">
+  <h3>Current Project Author</h3>
+  <p><%= User.find_by(id: @project.author_id) || 'No author set' %></p>
+</div>
