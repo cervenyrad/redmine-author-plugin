@@ -10,15 +10,20 @@ module AuthorAssignment
       module InstanceMethods
         def create
           super
-          @project.author_id = params[:user_id]
-          @project.save!
+          update_author_id
         end
 
         def update
           super
-          @project.author_id = params[:user_id]
-          @project.save!
+          update_author_id
         end
+      end
+
+      private
+
+      def update_author_id
+        @project.author_id = params[:user_id]
+        @project.save!
       end
     end
   end
